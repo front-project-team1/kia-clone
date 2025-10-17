@@ -1,5 +1,20 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Kia Signature Regular";
+  src: url("https://db.onlinewebfonts.com/t/f2b1aab07eb23b6d43b85a429901087a.eot");
+  src: url("https://db.onlinewebfonts.com/t/f2b1aab07eb23b6d43b85a429901087a.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/f2b1aab07eb23b6d43b85a429901087a.woff2")
+      format("woff2"),
+    url("https://db.onlinewebfonts.com/t/f2b1aab07eb23b6d43b85a429901087a.woff")
+      format("woff"),
+    url("https://db.onlinewebfonts.com/t/f2b1aab07eb23b6d43b85a429901087a.ttf")
+      format("truetype"),
+    url("https://db.onlinewebfonts.com/t/f2b1aab07eb23b6d43b85a429901087a.svg#Kia Signature Regular")
+      format("svg");
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -8,5 +23,5 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Kia Signature Regular", Arial, Helvetica, sans-serif;
 }

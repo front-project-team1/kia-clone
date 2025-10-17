@@ -19,7 +19,7 @@ export default function Header() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-sm">
+    <header className="fixed top-0 left-0 right-0 z-50 ">
       <div className="flex items-center justify-between px-8 py-4 max-w-[1920px] mx-auto">
         {/* Left Navigation */}
         <nav className="flex-1">
@@ -28,7 +28,7 @@ export default function Header() {
               <li key={index}>
                 <a
                   href={link.href}
-                  className="text-white text-sm font-medium hover:text-gray-300 transition-colors whitespace-nowrap"
+                  className="text-white text-lg font-semibold hover:text-gray-300 transition-colors whitespace-nowrap"
                 >
                   {link.text}
                 </a>
@@ -42,8 +42,8 @@ export default function Header() {
           <Link href="/">
             <Image
               src="/images/kia-logo.svg"
-              width={70}
-              height={24}
+              width={102}
+              height={56}
               alt="KIA logo"
               className="brightness-0 invert"
             />
@@ -57,7 +57,7 @@ export default function Header() {
               <li key={index}>
                 <a
                   href={link.href}
-                  className="text-white text-sm font-medium hover:text-gray-300 transition-colors whitespace-nowrap"
+                  className="text-white text-lg font-semibold hover:text-gray-300 transition-colors whitespace-nowrap"
                 >
                   {link.text}
                 </a>
