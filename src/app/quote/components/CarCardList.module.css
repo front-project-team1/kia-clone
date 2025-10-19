@@ -1,0 +1,11 @@
+.cardList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.card {
+  text-align: center;
+  aspect-ratio: 1.33/1;
+  margin: 20px;
+  background-color: grey;
+}
