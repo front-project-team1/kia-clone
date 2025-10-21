@@ -7,7 +7,7 @@ export default function Header() {
     { href: "#", text: "구매" },
     { href: "#", text: "체험" },
     { href: "#", text: "이벤트" },
-    { href: "#", text: "고객지원" },
+    { href: "/service/customer-center", text: "고객지원" },
     { href: "#", text: "Discover Kia" },
   ];
 
