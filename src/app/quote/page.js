@@ -4,6 +4,7 @@ import SubCategoryTab from "./components/SubCategoryTab.js"
 import CarCardList from "./components/CarCardList.js"
 import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import Link from 'next/link'
+import HeadLine from "./components/HeadLine.js";
 
 export default function Quote() {
   console.log("변수 초기화됨")
@@ -39,16 +40,10 @@ export default function Quote() {
       }
       return newEntry;
     })
-    console.log("vehicles : ")
-    console.log(vehicles)
-    console.log("vehicles end")
     setVehicles(vehicles);
   }
 
   const filterVehicleByCategory = (vehicles, no) => {
-    console.log("no : ")
-    console.log(no)
-    console.log("no end")
     let filtered = vehicles.filter((v) => {
       if (no.sub != -1) { // 서브카테고리가 있음
         return v.categoryNo == no.sub
@@ -70,14 +65,6 @@ export default function Quote() {
 
   // 데이터가 불러와진 후 categoryNo의 초기값 걸정
   useEffect(() => {
-    console.log("=============debug")
-    console.log(categories)
-  }, [vehicles])
-
-  useEffect(() => {
-    console.log(`debug : categoryNo`)
-    console.log(categoryNo)
-    console.log(`debug end`)
     if (categoryNo.main != -1 && vehicles.length > 0) { // 선택된 카테고리가 있으면
       setVehiclesByCategory(filterVehicleByCategory(vehicles, categoryNo));
     }
@@ -85,14 +72,11 @@ export default function Quote() {
 
   return (
     <div style={{paddingTop: '100px'}}> {/*헤더가 가림, 참고 : https://www.daleseo.com/css-position-fixed-navigation/*/}
-      <h1>견적 페이지</h1>
-      <button><Link href="/build">이동 테스트</Link></button>
-      <div>
-        <CategoryTab 
-          categories={categories}
-          setCategoryNo={setCategoryNo}
-        />
-      </div>
+      <HeadLine>견적 내기</HeadLine>
+      <CategoryTab 
+        categories={categories}
+        setCategoryNo={setCategoryNo}
+      />
       <div>
         <SubCategoryTab 
           categories={categories}
@@ -103,6 +87,7 @@ export default function Quote() {
       <div>
         <CarCardList
           carList={vehiclesByCategory}
+          categoryNo={categoryNo}
         />
       </div>
     </div>

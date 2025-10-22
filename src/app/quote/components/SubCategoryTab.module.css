@@ -1,3 +1,13 @@
 .activeItem {
-  color: blue;
+  font-weight: bold;
+}
+
+.subList {
+  display: flex;
+}
+
+.item {
+  font-size: 14px;
+  line-height: 4.0;
+  margin-right: 40px;
 }

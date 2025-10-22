@@ -1,5 +1,5 @@
 'use client';
-import styles from './CategoryTab.module.css'
+import styles from './SubCategoryTab.module.css'
 import SubCategoryTabItem from './SubCategoryTabItem.js'
 import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 
@@ -11,21 +11,17 @@ export default function SubCategoryTab({categories, categoryNo, setCategoryNo}) 
   if (activeMainItemId !== -1 && categories[activeMainItemId].subCategories) {
     subCategories = categories[activeMainItemId].subCategories;
     console.log(`activeMainItemId : ${activeMainItemId}`);
-    console.log(`subCategoires :`);
-    console.log(subCategories)
-    console.log('subCategoires end')
   }
 
   useEffect(() => {
     if (subCategories.length > 0) {
       let subCategoryNo = categories[activeMainItemId].subCategories[activeItemId].code;
       setCategoryNo({...categoryNo, sub: subCategoryNo});
-      console.log(`subCategoryNo : ${subCategoryNo}`);
     }
   }, [activeItemId]);
 
   return (
-    <ul>
+    <ul className={styles.subList}>
       {
         subCategories.map((category, id) => {
           return (
