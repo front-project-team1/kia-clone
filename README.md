@@ -2,6 +2,10 @@
 
 Next.js 학습을 위한 Kia 공식 홈페이지 클론 프로젝트입니다.
 
+## 🌐 배포
+
+**Live Demo**: [https://kia-clone-mf6b.vercel.app/](https://kia-clone-mf6b.vercel.app/)
+
 ## 📝 프로젝트 소개
 
 Kia 자동차의 공식 웹사이트를 클론 코딩하여 Next.js의 주요 기능들을 학습하고 실습하는 프로젝트입니다.
@@ -145,10 +149,23 @@ kia-clone/
 - Client/Server Component 구분
 - LocalStorage를 활용한 데이터 영속성
 
+## 🚀 배포 (Deployment)
+
+이 프로젝트는 Vercel에 배포되어 있습니다.
+
+- **배포 플랫폼**: Vercel
+- **자동 배포**: GitHub의 main 브랜치에 push 시 자동 배포
+- **프리뷰 배포**: Pull Request 생성 시 자동으로 프리뷰 URL 생성
+
+### 직접 배포하기
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/kia-clone)
+
 ## 🔗 참고 자료
 
 - [Next.js Documentation](https://nextjs.org/docs)
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+- [Vercel Documentation](https://vercel.com/docs)
 - [Kia Official Website](https://www.kia.com)
 
 ## 📄 라이선스
