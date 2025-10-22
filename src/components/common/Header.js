@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { useState, useEffect, useRef } from "react";
 
@@ -20,11 +21,17 @@ const rightMenuLinks = [
   { href: "#", text: "통합검색" },
 ];
 
+const blackTextPaths = ["/quote"];
+
 export default function Header() {
+  const pathname = usePathname();
   const { user, logout, isAuthenticated } = useAuth();
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const menuRef = useRef(null);
+
+  // 검은색 텍스트를 사용할 경로 정의
+  const useBlackText = blackTextPaths.includes(pathname);
 
   const handleLogout = () => {
     logout();
@@ -72,7 +79,11 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setShowMobileMenu(!showMobileMenu)}
-            className="lg:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors"
+            className={`lg:hidden p-2 rounded-lg transition-colors ${
+              useBlackText
+                ? "text-black hover:bg-black/10"
+                : "text-white hover:bg-white/10"
+            }`}
             aria-label="메뉴"
           >
             <svg
@@ -106,7 +117,11 @@ export default function Header() {
                 <li key={index}>
                   <Link
                     href={link.href}
-                    className="text-white text-lg font-semibold hover:text-gray-300 transition-colors whitespace-nowrap"
+                    className={`text-lg font-semibold transition-colors whitespace-nowrap ${
+                      useBlackText
+                        ? "text-black hover:text-gray-600"
+                        : "text-white hover:text-gray-300"
+                    }`}
                   >
                     {link.text}
                   </Link>
@@ -123,7 +138,9 @@ export default function Header() {
                 width={80}
                 height={44}
                 alt="KIA logo"
-                className="brightness-0 invert lg:w-[102px] lg:h-[56px]"
+                className={`lg:w-[102px] lg:h-[56px] ${
+                  useBlackText ? "brightness-0" : ""
+                }`}
               />
             </Link>
           </div>
@@ -135,7 +152,11 @@ export default function Header() {
                 <li key={index}>
                   <Link
                     href={link.href}
-                    className="text-white text-lg font-semibold hover:text-gray-300 transition-colors whitespace-nowrap"
+                    className={`text-lg font-semibold transition-colors whitespace-nowrap ${
+                      useBlackText
+                        ? "text-black hover:text-gray-600"
+                        : "text-white hover:text-gray-300"
+                    }`}
                   >
                     {link.text}
                   </Link>
@@ -147,7 +168,11 @@ export default function Header() {
                 <li className="relative" ref={menuRef}>
                   <button
                     onClick={() => setShowUserMenu(!showUserMenu)}
-                    className="flex items-center gap-2 text-white text-lg font-semibold hover:text-gray-300 transition-colors whitespace-nowrap"
+                    className={`flex items-center gap-2 text-lg font-semibold transition-colors whitespace-nowrap ${
+                      useBlackText
+                        ? "text-black hover:text-gray-600"
+                        : "text-white hover:text-gray-300"
+                    }`}
                   >
                     <svg
                       className="w-5 h-5"
@@ -203,7 +228,11 @@ export default function Header() {
                 <li>
                   <Link
                     href="/login"
-                    className="text-white text-lg font-semibold hover:text-gray-300 transition-colors whitespace-nowrap"
+                    className={`text-lg font-semibold transition-colors whitespace-nowrap ${
+                      useBlackText
+                        ? "text-black hover:text-gray-600"
+                        : "text-white hover:text-gray-300"
+                    }`}
                   >
                     로그인
                   </Link>
@@ -217,7 +246,11 @@ export default function Header() {
             {isAuthenticated ? (
               <button
                 onClick={() => setShowUserMenu(!showUserMenu)}
-                className="text-white p-2 hover:bg-white/10 rounded-lg transition-colors"
+                className={`p-2 rounded-lg transition-colors ${
+                  useBlackText
+                    ? "text-black hover:bg-black/10"
+                    : "text-white hover:bg-white/10"
+                }`}
               >
                 <svg
                   className="w-6 h-6"
@@ -236,7 +269,11 @@ export default function Header() {
             ) : (
               <Link
                 href="/login"
-                className="text-white p-2 hover:bg-white/10 rounded-lg transition-colors block"
+                className={`p-2 rounded-lg transition-colors block ${
+                  useBlackText
+                    ? "text-black hover:bg-black/10"
+                    : "text-white hover:bg-white/10"
+                }`}
               >
                 <svg
                   className="w-6 h-6"
@@ -277,10 +314,10 @@ export default function Header() {
             <Link href="/" onClick={closeMobileMenu}>
               <Image
                 src="/images/kia-logo.svg"
-                width={80}
-                height={44}
+                width={102}
+                height={56}
                 alt="KIA logo"
-                className="brightness-0 invert"
+                className="lg:w-[102px] lg:h-[56px]"
               />
             </Link>
             <button
