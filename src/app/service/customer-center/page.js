@@ -18,7 +18,6 @@ const PROCESS_STEPS = [
     { step: 4, title: "해결", icon: "✅", description: "고객 요구사항 조치 및 경영 정책 반영" },
 ];
 
-// CustomerCenterContent.js 파일 상단, FAQ_LIST 수정
 
 const FAQ_LIST_WITH_ANSWERS = [
     { 
@@ -127,10 +126,8 @@ const TopBanner = () => (
     </div>
 );
 
-// use client 지시어가 CustomerCenterContent.js 파일 최상단에 있어야 합니다.
-
 const FAQSection = () => {
-    // 현재 펼쳐진 FAQ 항목의 인덱스(번호)를 저장합니다. (null: 모두 닫힘)
+    // 현재 펼쳐진 FAQ 항목의 인덱스(번호)를 저장합니다.
     const [openIndex, setOpenIndex] = React.useState(null);
 
     // FAQ 항목을 토글하는 함수
