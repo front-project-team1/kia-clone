@@ -50,7 +50,7 @@ export default function CarCard({car, categoryNo}) {
               </img>
             </div>
             <div className={styles.cardTitle}>{replaceTxt}</div>
-            <div className={styles.cardCaption}>{basicPrice + "원 ~"}</div>
+            <div className={styles.cardCaption}>{(basicPrice / 10000).toLocaleString() + " 만원 ~"}</div>
           </div>
         </Link>
       </div>

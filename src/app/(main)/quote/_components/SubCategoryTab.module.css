@@ -1,9 +1,16 @@
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .activeItem {
   font-weight: bold;
 }
 
 .subList {
   display: flex;
+  width: 80%;
 }
 
 .item {

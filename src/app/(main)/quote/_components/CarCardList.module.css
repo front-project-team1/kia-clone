@@ -50,10 +50,13 @@
 
 .cardTitle {
   margin-top: 1pc;
+  font-weight: bold;
 }
 
 .cardCaption {
   margin-top: 4px;
+  color: #818181;
+  font-size: 14px;
 }
 
 @keyframes slideLeft {
