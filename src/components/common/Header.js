@@ -1,11 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
+import kia360 from '@/app/kia360/page';
 
 export default function Header() {
   const navLinks = [
     { href: "#", text: "차량" },
     { href: "#", text: "구매" },
-    { href: "#", text: "체험" },
+    { href: "/kia360", text: "체험" },
     { href: "#", text: "이벤트" },
     { href: "/service/customer-center", text: "고객지원" },
     { href: "#", text: "Discover Kia" },
