@@ -125,8 +125,13 @@ export default function Home() {
               </div>
 
               {/* Car Image Placeholder */}
-              <div className="aspect-[16/9] bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg mb-6 flex items-center justify-center">
-                <span className="text-gray-400 font-medium">car1</span>
+              <div className="aspect-[16/9] rounded-lg mb-6 flex items-center justify-center relative overflow-hidden">
+                <Image
+                  src="/images/car1.avif"
+                  alt="Car Image"
+                  className="object-contain p-4"
+                  fill
+                />
               </div>
 
               {/* Specs */}
@@ -188,8 +193,13 @@ export default function Home() {
               </div>
 
               {/* Car Image Placeholder */}
-              <div className="aspect-[16/9] bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg mb-6 flex items-center justify-center">
-                <span className="text-gray-400 font-medium">car2</span>
+              <div className="aspect-[16/9] rounded-lg mb-6 flex items-center justify-center relative overflow-hidden">
+                <Image
+                  src="/images/car2.avif"
+                  alt="Car Image"
+                  className="object-contain p-4"
+                  fill
+                />
               </div>
 
               {/* Specs */}
@@ -250,8 +260,13 @@ export default function Home() {
               </div>
 
               {/* Car Image Placeholder */}
-              <div className="aspect-[16/9] bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg mb-6 flex items-center justify-center">
-                <span className="text-gray-400 font-medium">car3</span>
+              <div className="aspect-[16/9] rounded-lg mb-6 flex items-center justify-center relative overflow-hidden">
+                <Image
+                  src="/images/car3.avif"
+                  alt="Car Image"
+                  className="object-contain p-4"
+                  fill
+                />
               </div>
 
               {/* Specs */}
