@@ -5,11 +5,36 @@ import Link from "next/link";
 import { useAuth } from "@/contexts/AuthContext";
 import { useState, useEffect, useRef } from "react";
 
+const navLinks = [
+  { href: "#", text: "차량" },
+  { href: "#", text: "구매" },
+  { href: "/kia360", text: "체험" },
+  { href: "#", text: "이벤트" },
+  { href: "/service/customer-center", text: "고객지원" },
+  { href: "#", text: "Discover Kia" },
+];
+
+const rightMenuLinks = [
+  { href: "#", text: "PBV" },
+  { href: "#", text: "KR" },
+  { href: "#", text: "통합검색" },
+];
+
 export default function Header() {
   const { user, logout, isAuthenticated } = useAuth();
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const menuRef = useRef(null);
+
+  const handleLogout = () => {
+    logout();
+    setShowUserMenu(false);
+    setShowMobileMenu(false);
+  };
+
+  const closeMobileMenu = () => {
+    setShowMobileMenu(false);
+  };
 
   // 외부 클릭 감지
   useEffect(() => {
@@ -39,31 +64,6 @@ export default function Header() {
       document.body.style.overflow = "unset";
     };
   }, [showMobileMenu]);
-
-  const navLinks = [
-    { href: "#", text: "차량" },
-    { href: "#", text: "구매" },
-    { href: "/kia360", text: "체험" },
-    { href: "#", text: "이벤트" },
-    { href: "/service/customer-center", text: "고객지원" },
-    { href: "#", text: "Discover Kia" },
-  ];
-
-  const rightMenuLinks = [
-    { href: "#", text: "PBV" },
-    { href: "#", text: "KR" },
-    { href: "#", text: "통합검색" },
-  ];
-
-  const handleLogout = () => {
-    logout();
-    setShowUserMenu(false);
-    setShowMobileMenu(false);
-  };
-
-  const closeMobileMenu = () => {
-    setShowMobileMenu(false);
-  };
 
   return (
     <>
