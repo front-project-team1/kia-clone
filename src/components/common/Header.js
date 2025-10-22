@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import kia360 from '@/app/kia360/page';
+import kia360 from "@/app/kia360/page";
 
 export default function Header() {
   const navLinks = [
@@ -20,7 +20,7 @@ export default function Header() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 ">
+    <header className="absolute top-0 left-0 right-0 z-50 ">
       <div className="flex items-center justify-between px-8 py-4 max-w-[1920px] mx-auto">
         {/* Left Navigation */}
         <nav className="flex-1">
