@@ -1,0 +1,79 @@
+﻿{
+  "code": "0000",
+  "message": "Success",
+  "responseTime": "2025-10-15T07:35:29.084+00:00",
+  "body": [
+    {
+      "code": "1",
+      "name": "EV",
+      "subCategories": null
+    },
+    {
+      "code": "18",
+      "name": "PBV",
+      "subCategories": null
+    },
+    {
+      "code": "2",
+      "name": "승용",
+      "subCategories": [
+        {
+          "code": "7",
+          "name": "자가용",
+          "subCategories": null
+        },
+        {
+          "code": "8",
+          "name": "렌터카",
+          "subCategories": null
+        },
+        {
+          "code": "9",
+          "name": "장애인",
+          "subCategories": null
+        }
+      ]
+    },
+    {
+      "code": "3",
+      "name": "RV",
+      "subCategories": null
+    },
+    {
+      "code": "4",
+      "name": "택시 &amp; 상용",
+      "subCategories": [
+        {
+          "code": "10",
+          "name": "택시",
+          "subCategories": null
+        },
+        {
+          "code": "11",
+          "name": "트럭",
+          "subCategories": null
+        },
+        {
+          "code": "12",
+          "name": "탑차/윙바디/워크스루밴",
+          "subCategories": null
+        },
+        {
+          "code": "13",
+          "name": "덤프",
+          "subCategories": null
+        },
+        {
+          "code": "14",
+          "name": "파워게이트",
+          "subCategories": null
+        },
+        {
+          "code": "15",
+          "name": "홈로리/활어수송차",
+          "subCategories": null
+        }
+      ]
+    }
+  ]
+}

@@ -8,7 +8,7 @@ import { useState, useEffect, useRef } from "react";
 
 const navLinks = [
   { href: "#", text: "차량" },
-  { href: "#", text: "구매" },
+  { href: "/quote", text: "구매" },
   { href: "/kia360", text: "체험" },
   { href: "#", text: "이벤트" },
   { href: "/service/customer-center", text: "고객지원" },

@@ -1,0 +1,23 @@
+.title {
+  display: flex;
+  justify-content: center;
+  padding: 80px 0px 40px;
+}
+
+.titleText {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .title {
+    padding: 80px 0px 10px 10px;
+    justify-content: left;
+  }
+}
+
+@media (max-width: 768px) {
+  .titleText {
+    font-size: 18px;
+  }
+}

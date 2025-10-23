@@ -1,0 +1,39 @@
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.activeItem {
+  font-weight: bold;
+}
+
+.subList {
+  display: flex;
+  width: 80%;
+}
+
+@media (max-width: 768px) {
+  .subList {
+    margin-left: 10px;
+    width: 100%;
+  }
+}
+
+.item {
+  font-size: 14px;
+  line-height: 4.0;
+  margin-right: 40px;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .item {
+    font-size: 12px;
+    font-weight: 400;
+    margin-right: 20px;
+  }
+}
+
+
+

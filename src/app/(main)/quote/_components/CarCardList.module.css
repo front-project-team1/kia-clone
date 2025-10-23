@@ -1,0 +1,110 @@
+.cardListContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 1pc;
+  padding-right: 1pc;
+}
+
+.cardList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1400px;
+}
+
+@media (max-width: 768px) {
+  .cardList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.card {
+  font-size: 1pc;
+  text-align: center;
+  /* background-color: #4FB7B3; */
+  background-clip: content-box;
+  height: 400px;
+  padding: 2pc 0 40px;
+  transition: all .3s;
+}
+
+@media (max-width: 768px) {
+  .card {
+    height: auto;
+    aspect-ratio: 1/1;
+  }
+}
+
+.card:hover {
+  background-color: #d1d1d1;
+}
+
+@media (max-width: 768px) {
+  .card:hover {
+    background-color: transparent;
+  }
+}
+
+.cardContents {
+  /* background-color: blue; */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cardTitle {
+  margin-top: 1pc;
+  font-weight: bold;
+}
+
+.cardCaption {
+  margin-top: 4px;
+  color: #818181;
+  font-size: 14px;
+}
+
+@keyframes slideLeft {
+  from {
+    transform: translateX(100px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.card img {
+  display: block;
+}
+
+.imgContainer {
+  position: relative;
+  display: flex;
+  max-width: 25pc;
+}
+
+.hoverImg {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: all 1s
+}
+
+.firstImg {
+  transition: all 1s;
+}
+
+.hoverImgHover {
+  opacity: 1;
+}
+
+.firstImgHover {
+  opacity: 0;
+}
+
+.slideLeft {
+  animation: slideLeft 1.0s;
+  will-change: transform;
+}
+
