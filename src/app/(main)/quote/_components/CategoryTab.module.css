@@ -5,6 +5,13 @@
   justify-content: center;
 }
 
+@media (max-width: 768px) {
+  .container {
+    justify-content: left;
+    margin-left: 10px;
+  }
+}
+
 .categoryTab {
   display: flex;
   justify-content: flex-start;
@@ -15,12 +22,26 @@
   padding-right: 40px;
 }
 
+@media (max-width: 768px) {
+  .categoryTabItem {
+    padding-right: 32px;
+  }
+}
+
 .categoryText {
   font-size: 16px;
   line-height: 2.5;
   font-weight: 600;
   color: rgb(133, 133, 133);
 }
+
+@media (max-width: 768px) {
+  .categoryText {
+    font-size: 12px;
+    font-weight: 400;
+  }
+}
+
 
 .categoryText.active {
   color: black;

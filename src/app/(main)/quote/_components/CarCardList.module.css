@@ -29,14 +29,20 @@
   transition: all .3s;
 }
 
+@media (max-width: 768px) {
+  .card {
+    height: auto;
+    aspect-ratio: 1/1;
+  }
+}
+
 .card:hover {
   background-color: #d1d1d1;
 }
 
 @media (max-width: 768px) {
-  .card {
-    height: auto;
-    aspect-ratio: 1/1;
+  .card:hover {
+    background-color: transparent;
   }
 }
 
@@ -87,7 +93,6 @@
 
 .firstImg {
   transition: all 1s;
-
 }
 
 .hoverImgHover {
