@@ -26,7 +26,7 @@ export default function LoginPage() {
     const { success, message } = await login(email, password);
 
     if (success) {
-      router.push("/");
+      router.replace("/");
     } else {
       setError(message);
     }

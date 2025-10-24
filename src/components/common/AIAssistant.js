@@ -1,13 +1,29 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function AIAssistant() {
   const [isOpen, setIsOpen] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
+  const [messages, setMessages] = useState([
+    {
+      id: 1,
+      type: "ai",
+      content: "안녕하세요, 무엇을 도와드릴까요?",
+      timestamp: new Date(),
+    },
+  ]);
+  const [inputMessage, setInputMessage] = useState("");
+  const [isTyping, setIsTyping] = useState(false);
+  const messagesEndRef = useRef(null);
 
   const toggleModal = () => {
     setIsOpen(!isOpen);
+  };
+
+  // 자동 스크롤 함수
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   // 실시간 시간 업데이트
@@ -19,6 +35,11 @@ export default function AIAssistant() {
     return () => clearInterval(timer);
   }, []);
 
+  // 메시지가 추가될 때마다 스크롤을 맨 아래로
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages, isTyping]);
+
   // 시간 포맷팅 함수
   const formatTime = (date) => {
     const year = date.getFullYear().toString().slice(-2);
@@ -28,6 +49,67 @@ export default function AIAssistant() {
     const minutes = date.getMinutes().toString().padStart(2, "0");
 
     return `${year}.${month}.${day} ${hours}:${minutes}`;
+  };
+
+  // 메시지 전송 함수
+  const sendMessage = async () => {
+    if (!inputMessage.trim()) return;
+
+    const userMessage = {
+      id: Date.now(),
+      type: "user",
+      content: inputMessage.trim(),
+      timestamp: new Date(),
+    };
+
+    setMessages((prev) => [...prev, userMessage]);
+    setInputMessage("");
+    setIsTyping(true);
+
+    // AI 응답 시뮬레이션
+    setTimeout(() => {
+      const aiResponse = generateAIResponse(inputMessage.trim());
+      const aiMessage = {
+        id: Date.now() + 1,
+        type: "ai",
+        content: aiResponse,
+        timestamp: new Date(),
+      };
+
+      setMessages((prev) => [...prev, aiMessage]);
+      setIsTyping(false);
+    }, 1500);
+  };
+
+  // AI 응답 생성 함수
+  const generateAIResponse = (userInput) => {
+    const responses = {
+      안녕: "안녕하세요! 기아 AI 어시스턴트입니다. 무엇을 도와드릴까요?",
+      차량: "차량에 대해 궁금한 것이 있으시군요! 구체적으로 어떤 부분이 궁금하신가요?",
+      구매: "차량 구매에 대해 도움을 드리겠습니다. 예산이나 선호하는 모델이 있으신가요?",
+      가격: "차량 가격 정보를 제공해드릴 수 있습니다. 관심 있는 모델을 알려주세요.",
+      세금: "자동차 세금에 대해 문의하시는군요. 구체적인 세금 종류를 알려주시면 더 정확한 정보를 제공해드릴 수 있습니다.",
+      추천: "차량 추천을 도와드리겠습니다! 예산과 용도를 알려주시면 적합한 모델을 추천해드릴게요.",
+      혜택: "구매 혜택에 대해 문의하시는군요! 현재 진행 중인 프로모션 정보를 확인해드릴 수 있습니다.",
+    };
+
+    // 키워드 매칭
+    for (const [keyword, response] of Object.entries(responses)) {
+      if (userInput.includes(keyword)) {
+        return response;
+      }
+    }
+
+    // 기본 응답
+    return "죄송합니다. 더 구체적인 질문을 해주시면 정확한 답변을 드릴 수 있습니다. 차량 구매, 가격, 세금, 추천 등에 대해 문의해주세요.";
+  };
+
+  // Enter 키로 메시지 전송
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
   };
 
   return (
@@ -109,42 +191,8 @@ export default function AIAssistant() {
                 </span>
               </div>
 
-              {/* AI Avatar and Message */}
-              <div className="flex items-start space-x-3 mb-6">
-                <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center">
-                  <svg
-                    className="w-5 h-5 text-white"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-                  </svg>
-                </div>
-                <div className="flex-1">
-                  <p className="text-gray-900 mb-2">
-                    안녕하세요, 무엇을 도와드릴까요?
-                  </p>
-                  <div className="text-xs text-gray-500 space-y-1">
-                    <p>소중한 개인 정보는 입력하지 마세요.</p>
-                    <p>챗봇 이용 시 데이터 요금이 발생할 수 있습니다.</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Chat Start Line */}
-              <div className="relative mb-6">
-                <div className="absolute inset-0 flex items-center">
-                  <div className="w-full border-t border-gray-200"></div>
-                </div>
-                <div className="relative flex justify-center text-xs">
-                  <span className="bg-white px-2 text-gray-500">
-                    챗봇 상담을 시작합니다.
-                  </span>
-                </div>
-              </div>
-
               {/* Feature Cards */}
-              <div className="space-y-4">
+              <div className="space-y-4 mb-6">
                 {/* System Message Icon */}
                 <div className="flex items-start space-x-3">
                   <div className="w-6 h-6 bg-gray-600 rounded-full flex items-center justify-center">
@@ -197,6 +245,109 @@ export default function AIAssistant() {
                   </button>
                 </div>
               </div>
+
+              {/* Chat Start Line */}
+              <div className="relative mb-6">
+                <div className="absolute inset-0 flex items-center">
+                  <div className="w-full border-t border-gray-200"></div>
+                </div>
+                <div className="relative flex justify-center text-xs">
+                  <span className="bg-white px-2 text-gray-500">
+                    챗봇 상담을 시작합니다.
+                  </span>
+                </div>
+              </div>
+
+              {/* Messages */}
+              <div className="space-y-4">
+                {messages.map((message) => (
+                  <div
+                    key={message.id}
+                    className={`flex items-start space-x-3 ${
+                      message.type === "user"
+                        ? "flex-row-reverse space-x-reverse"
+                        : ""
+                    }`}
+                  >
+                    {/* Avatar */}
+                    <div
+                      className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                        message.type === "ai" ? "bg-black" : "bg-gray-500"
+                      }`}
+                    >
+                      {message.type === "ai" ? (
+                        <svg
+                          className="w-5 h-5 text-white"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                        </svg>
+                      ) : (
+                        <svg
+                          className="w-5 h-5 text-white"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                        </svg>
+                      )}
+                    </div>
+
+                    {/* Message Content */}
+                    <div
+                      className={`flex-1 ${
+                        message.type === "user" ? "text-right" : ""
+                      }`}
+                    >
+                      <div
+                        className={`inline-block max-w-xs px-4 py-2 rounded-lg ${
+                          message.type === "ai"
+                            ? "bg-gray-100 text-gray-900"
+                            : "bg-blue-500 text-white"
+                        }`}
+                      >
+                        <p className="text-sm">{message.content}</p>
+                      </div>
+                      <p className="text-xs text-gray-500 mt-1">
+                        {formatTime(message.timestamp)}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+
+                {/* Typing Indicator */}
+                {isTyping && (
+                  <div className="flex items-start space-x-3">
+                    <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center">
+                      <svg
+                        className="w-5 h-5 text-white"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                      </svg>
+                    </div>
+                    <div className="flex-1">
+                      <div className="bg-gray-100 text-gray-900 px-4 py-2 rounded-lg inline-block">
+                        <div className="flex space-x-1">
+                          <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                          <div
+                            className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
+                            style={{ animationDelay: "0.1s" }}
+                          ></div>
+                          <div
+                            className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
+                            style={{ animationDelay: "0.2s" }}
+                          ></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+              {/* 스크롤 기준점 */}
+              <div ref={messagesEndRef} />
             </div>
 
             {/* Input Area */}
@@ -205,9 +356,16 @@ export default function AIAssistant() {
                 <input
                   type="text"
                   placeholder="메시지를 입력하세요..."
+                  value={inputMessage}
+                  onChange={(e) => setInputMessage(e.target.value)}
+                  onKeyPress={handleKeyPress}
                   className="flex-1 border border-gray-300 rounded-full px-4 py-2 text-sm focus:outline-none focus:border-gray-500"
                 />
-                <button className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
+                <button
+                  onClick={sendMessage}
+                  disabled={!inputMessage.trim()}
+                  className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-300 transition-colors"
+                >
                   <svg
                     className="w-4 h-4 text-gray-600"
                     fill="currentColor"
