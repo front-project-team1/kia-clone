@@ -10,7 +10,7 @@ const navLinks = [
   { href: "#", text: "차량" },
   { href: "/quote", text: "구매" },
   { href: "/kia360", text: "체험" },
-  { href: "#", text: "이벤트" },
+  { href: "/purchase-guide/tax", text: "세금" },
   { href: "/service/customer-center", text: "고객지원" },
   { href: "#", text: "Discover Kia" },
 ];
@@ -21,7 +21,7 @@ const rightMenuLinks = [
   { href: "#", text: "통합검색" },
 ];
 
-const blackTextPaths = ["/quote"];
+const blackTextPaths = ["/quote", "/purchase-guide/tax"];
 
 export default function Header() {
   const pathname = usePathname();
