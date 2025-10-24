@@ -14,7 +14,7 @@ export default function LoginPage() {
   const router = useRouter();
   const { login } = useAuth();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
 
@@ -23,12 +23,12 @@ export default function LoginPage() {
       return;
     }
 
-    const result = login(email, password);
+    const { success, message } = await login(email, password);
 
-    if (result.success) {
+    if (success) {
       router.push("/");
     } else {
-      setError(result.message);
+      setError(message);
     }
   };
 
