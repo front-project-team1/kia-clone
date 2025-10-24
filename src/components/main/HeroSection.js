@@ -54,11 +54,6 @@ export default function HeroSection() {
           />
         ))}
       </div>
-
-      {/* AI Button */}
-      <button className="absolute bottom-8 right-8 w-12 h-12 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center hover:bg-white transition-colors">
-        <span className="text-sm font-bold text-black">AI</span>
-      </button>
     </section>
   );
 }
