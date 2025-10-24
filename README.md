@@ -1,4 +1,4 @@
-# Kia.com 홈페이지 클론 코딩
+# KIA AICC 챗봇 서비스
 
 Next.js 학습을 위한 Kia 공식 홈페이지 클론 프로젝트입니다.
 
@@ -8,7 +8,7 @@ Next.js 학습을 위한 Kia 공식 홈페이지 클론 프로젝트입니다.
 
 ## 📝 프로젝트 소개
 
-Kia 자동차의 공식 웹사이트를 클론 코딩하여 Next.js의 주요 기능들을 학습하고 실습하는 프로젝트입니다.
+KIA AICC 챗봇 서비스를 구현한 Next.js 프로젝트입니다. Kia 자동차의 공식 웹사이트를 클론 코딩하여 Next.js의 주요 기능들을 학습하고 실습하는 프로젝트입니다.
 
 ## 🚀 기술 스택
 
@@ -34,6 +34,12 @@ Kia 자동차의 공식 웹사이트를 클론 코딩하여 Next.js의 주요 �
   - 데스크탑: 풀 네비게이션 바
   - 로그인/사용자 정보 표시
 - **Footer**: 다단 푸터 레이아웃
+- **AI Assistant**:
+  - 실시간 채팅 인터페이스
+  - 키워드 기반 자동 응답 시스템
+  - 차량 추천 및 가격 정보 제공
+  - 타이핑 애니메이션 및 실시간 시간 표시
+  - Enter 키 메시지 전송 지원
 
 ### 인증 기능
 
@@ -103,7 +109,8 @@ kia-clone/
 │   ├── components/
 │   │   ├── common/            # 공통 컴포넌트
 │   │   │   ├── Header.js
-│   │   │   └── Footer.js
+│   │   │   ├── Footer.js
+│   │   │   └── AIAssistant.js
 │   │   ├── main/              # 메인 페이지 컴포넌트
 │   │   │   ├── HeroSection.js
 │   │   │   ├── BestKiaSection.js
@@ -152,6 +159,9 @@ kia-clone/
 - Context API를 사용한 전역 상태 관리
 - Client/Server Component 구분
 - LocalStorage를 활용한 데이터 영속성
+- 실시간 채팅 UI 구현
+- 키워드 기반 자동 응답 시스템
+- 타이핑 애니메이션 및 상태 관리
 
 ## 🚀 배포 (Deployment)
 
