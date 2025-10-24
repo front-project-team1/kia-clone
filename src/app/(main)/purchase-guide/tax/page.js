@@ -6,7 +6,9 @@ export default function TaxPage() {
       <h1 className={styles.title}>세금</h1>
 
       {/* 구입단계 : 개별소비세, 교육세, 부가가치세 */}
-      <h2 className={styles.subTitle}>구입단계 : 개별소비세, 교육세, 부가가치세</h2>
+      <h2 className={styles.subTitle}>
+        구입단계 : 개별소비세, 교육세, 부가가치세
+      </h2>
       <table className={styles.taxTable}>
         <thead>
           <tr>
@@ -42,7 +44,7 @@ export default function TaxPage() {
               <br />
               ※ 기준판매비율 적용 주기
               <br />
-              '23.7월 1일부터 3년간 적용
+              23.7월 1일부터 3년간 적용
             </td>
             <td>개별소비세의 30%</td>
             <td>과세표준액의 10%</td>
@@ -142,16 +144,17 @@ export default function TaxPage() {
             <td>1000cc이하 승용차</td>
             <td>80원/cc</td>
             <td>18원/cc</td>
-            
           </tr>
           <tr>
             <td>10000kg이하 화물차</td>
             <td>157,500원/년</td>
             <td>45,500원/년</td>
             <td rowSpan="7">
-            1만kg 초과시
-            <br />① 비영업용: 적재적량 1만kg이하의 세액에 1만kg을 초과시 마다 + 3만원
-            <br />② 영업용: 적재적량 1만kg이하의 세액에 1만kg을 초과시 마다 + 1만원
+              1만kg 초과시
+              <br />① 비영업용: 적재적량 1만kg이하의 세액에 1만kg을 초과시 마다
+              + 3만원
+              <br />② 영업용: 적재적량 1만kg이하의 세액에 1만kg을 초과시 마다 +
+              1만원
             </td>
           </tr>
           <tr>
