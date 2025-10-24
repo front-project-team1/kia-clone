@@ -1,0 +1,105 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap");
+
+.taxSection {
+  width: 100%;
+  padding: 40px 20px;
+  font-family: "Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+  color: #222;
+  background-color: #fff;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 32px;
+  letter-spacing: -0.5px;
+}
+
+.subTitle {
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 40px;
+  margin-bottom: 14px;
+  color: #1a1a1a;
+  letter-spacing: -0.3px;
+}
+
+.taxTable {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  margin-bottom: 40px;
+  font-size: 15px;
+  border-top: 1px solid #999;
+  border-bottom: 1px solid #999;
+}
+
+/* ✅ 첫 번째 행 (헤더) */
+.taxTable thead tr:first-child th {
+  background-color: #000; /* 검은 바탕 */
+  color: #fff; /* 흰 글씨 */
+  font-weight: 700;
+  text-align: center;
+  font-size: 15px;
+  border-left: none;
+  border-right: none;
+}
+
+/* ✅ 셀 공통 스타일 */
+.taxTable th,
+.taxTable td {
+  border: 1px solid #999; /* 회색 내부 줄 */
+  padding: 10px 6px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 1.5;
+  word-break: keep-all;
+  white-space: pre-line;
+  background-color: #fff;
+}
+
+/* ✅ 표 좌우 모서리선 제거 */
+.taxTable tr td:first-child,
+.taxTable tr th:first-child {
+  border-left: none;
+}
+
+.taxTable tr td:last-child,
+.taxTable tr th:last-child {
+  border-right: none;
+}
+
+.taxTable td {
+  font-weight: 400;
+}
+
+/* ✅ 첫 번째 열 (본문부) 옅은 회색 */
+.taxTable tbody tr td:first-child {
+  background-color: #f5f5f5;
+  font-weight: 500;
+}
+
+/* ✅ 짝수 행 연회색 */
+.taxTable tbody tr:nth-child(even) td:not(:first-child) {
+  background-color: #fafafa;
+}
+
+/* ✅ 병합 셀 중앙 정렬 */
+.taxTable td[rowspan],
+.taxTable th[rowspan] {
+  vertical-align: middle;
+}
+
+/* ✅ 인쇄 모드 */
+@media print {
+  .taxSection {
+    padding: 0;
+  }
+  .title {
+    font-size: 22px;
+  }
+  .taxTable {
+    font-size: 13px;
+  }
+}
